@@ -1,0 +1,369 @@
+	%% This is file `elsarticle-template-1-num.tex',
+%%
+%% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+
+\documentclass[a4paper]{article}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{cancel}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ dsfont }
+\usepackage{tikz-cd}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{float}
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+\usepackage{hyperref}
+\usepackage{enumitem}
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+\newtheorem{name}{Printed output}
+\newtheorem{mydef}{Definition}
+\newtheoremstyle{break}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+
+\theoremstyle{plain} %italics
+\newtheorem{question}{Question}
+
+\newtheorem{theorem}{Theorem}[section]
+%\numberwithin{theorem}{subsection}
+
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}[theorem]{Lemma}
+%\numberwithin{lemma}{subsection}
+
+\newtheorem{corollary}[theorem]{Corollary}
+%\numberwithin{corollary}{subsection}
+
+\newtheorem{proposition}[theorem]{Proposition}
+%\numberwithin{proposition}{subsection}
+
+\theoremstyle{definition} %non italics
+
+\newtheorem{definition}[theorem]{Definition}
+%\numberwithin{definition}{subsection}
+
+\newtheorem*{note*}{Note}
+
+\newtheorem*{claim}{Claim}
+
+\newtheorem*{remark}{Remark}
+
+\newtheorem*{example}{Example}
+
+\numberwithin{equation}{subsection}
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+\newcommand{\hodge}{{*}}
+\newcommand{\tang}{\operatorname{\textbf{\textup{t}}}}
+\newcommand{\norm}{\operatorname{\textbf{\textup{n}}}}
+%mathbb short cut
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bP}{\mathbb{bP}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bS}{\mathbb{S}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+
+\usepackage{comment}
+%bm short cut
+\newcommand{\bmv}{\bm{v}}
+\newcommand{\bmu}{\bm{u}}
+\newcommand{\bmw}{\bm{w}}
+\newcommand{\bmx}{\bm{x}}
+
+%mathcal shortcut
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cJ}{\mathcal{J}}
+
+%mathfraktur shortcut
+\newcommand{\frp}{\mathfrak{p}}
+\newcommand{\frq}{\mathfrak{q}}
+\newcommand{\frm}{\mathfrak{m}}
+\newcommand{\frP}{\mathfrak{P}}
+
+%mathscr shortcut
+\newcommand{\msF}{\mathscr{F}}
+\newcommand{\msA}{\mathscr{A}}
+\newcommand{\msM}{\mathscr{M}}
+\newcommand{\msE}{\mathscr{E}}
+\newcommand{\msU}{\mathscr{U}}
+\newcommand{\msB}{\mathscr{B}}
+\newcommand{\msD}{\mathscr{D}}
+\newcommand{\msL}{\mathscr{L}}
+\newcommand{\msS}{\mathscr{S}}
+\newcommand{\msG}{\mathscr{G}}
+\newcommand{\msT}{\mathscr{T}}
+\newcommand{\msC}{\mathscr{C}}
+\newcommand{\msH}{\mathscr{H}}
+\newcommand{\msO}{\mathscr{O}}
+\newcommand{\msJ}{\mathscr{J}}
+\newcommand{\msP}{\mathscr{P}}
+
+
+%set notation shortcut
+\newcommand{\vect}[1]{\underline{\textbf{#1}}}
+\newcommand{\llangle}{\left\langle}
+\newcommand{\rrangle}{\right\rangle}
+\newcommand{\llbrace}{\left\lbrace}
+\newcommand{\rrbrace}{\right\rbrace}
+\newcommand{\setof}[1]{\left\lbrace #1 \right\rbrace}
+
+
+\newcommand{\cFA}{\cF(\cA)}
+\newcommand{\sigmaA}{\sigma(\cA)}
+\newcommand{\del}[2]{\frac{\partial #1}{\partial #2}}
+
+
+\newcommand{\innerproductb}[2]{\llangle\bm{#1},\bm{#2}\rrangle}
+\newcommand{\innerproduct}[2]{\llangle{#1},{#2}\rrangle}
+
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\sh}{\operatorname{sh}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Mor}{\operatorname{Mor}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Mod}{\operatorname{Mod}}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand*{\sheafhom}{\mathcal{H}\kern -.5pt \it{ om}}
+\newcommand*{\sheafspec}{\mathcal{S}\kern -.5pt \it{ pec}}
+\newcommand*{\sheafproj}{{\mathcal{P}\kern -.5pt \it{ roj}}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Qcoh}{\operatorname{Qcoh}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\Op}{\operatorname{Op}}
+\newcommand{\WF}{\operatorname{WF}}
+\newcommand{\Char}{\operatorname{Char}}
+\newcommand{\Ell}{\operatorname{Ell}}
+\newcommand{\RE}{\operatorname{Re}}
+\newcommand{\IM}{\operatorname{Im}}
+
+
+\begin{document}
+
+%% Title, authors and addresses
+
+\title{\textbf{LaTeX in VSCode Example}}
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{\textbf{Jeffrey Thompson}}
+\maketitle
+\begin{abstract}
+Abstract
+\end{abstract}
+\tableofcontents
+\newpage
+\section{Averages}
+Let $x_1,\dots, x_n$ be numeric recorded data values.
+
+\begin{definition}
+\textbf{Average (mean)}:
+$$\overline{x} = \frac{x_1 + \dots + x_n}{n}= \frac{\Sigma_{i=1}^nx_i}{n}= \frac{\operatorname{SUM}([x])}{\operatorname{COUNT}([x])} = \operatorname{AVG}([x])$$
+\end{definition}
+
+Note that 
+
+$$\overline{x}= \frac{1}{n}x_1 + \dots + \frac{1}{n}x_n$$
+
+A weighted average is an average which in which some of the data is given higher or lower priority. More rigorously, if we have weights $w_1, \dots, w_n$ where each $w_i$ is between $0$ and $1$, and $w_1 + \dots + w_n = 1$, Then
+
+\begin{definition}
+\textbf{Weighted Average}:
+$$\overline{x} = w_1x_1 + \dots + w_nx_n= \Sigma_{i=1}^nw_ix_i= \operatorname{SUM}([w]\times[x])$$
+\end{definition}
+Note that the mean can be viewed as a weighted average with each weight being $\frac{1}{n}$. 
+
+What weights should we choose? 
+\subsection{Our favourite weighted average}
+An important use-case of weighted averages is the ``correct'' way to take averages of averages (or percentages). If we \textbf{have} two \textbf{averages already} $\overline{x}$ and $\overline{y}$, and the \textbf{number of records used to compute those averages}, $n$ and $m$, as in
+$$\overline{x} =  \frac{x_1 + \dots + x_n}{n}$$
+$$\overline{y} =  \frac{y_1 + \dots + y_m}{m}$$
+Then we can compute the average of both via the formula:
+\begin{example}
+    \textbf{Weighted Average of averages}
+
+    $$ \overline{z} = \frac{n\overline{x}+m\overline{y}}{n+m} = \frac{\operatorname{SUM}([\text{Number of records}]\times[\text{Averages}])}{\operatorname{SUM}([\text{Number of records}])}$$
+Where $\overline{z}$ is the average for the row-level numeric data values for $x$ and $y$ combined (union).
+
+Note that this is the same as
+
+$$\overline{z}= \frac{n}{n+m}\overline{x}+ \frac{m}{n+m}\overline{y}$$
+
+Where you can notice that $\frac{n}{n+m}\times100$ and $\frac{m}{n+m}\times100$ are the percentages of the total number of records!
+\end{example}
+Why this formula? We know that 
+$$ \frac{n\overline{x}+m\overline{y}}{n+m} =  \frac{\cancel{n}\frac{x_1 + \dots + x_n}{\cancel{n}}+\cancel{m}\frac{y_1 + \dots + y_m}{\cancel{m}}}{n+m} = \frac{x_1 + \dots + x_n + y_1 + \dots + y_m}{n+m} $$
+
+Which is exactly the formula for the average of the combined data field of $x$ and $y$! Therefore, this is the correct way to take averages of averages. 
+
+This is \textbf{not} equal to 
+$$\text{naive average} = \frac{\overline{x}+ \overline{y}}{2}$$
+
+Note that similar logic can be applied for when you have more than two averages.
+
+\newpage
+
+\section{Quadratic Formula via Sympy Example}
+Start: $$ a x^{2} + b x + c = 0 $$
+
+Start (simplified): $$ a x^{2} + b x + c = 0 $$
+
+Divide by a: $$ \frac{a x^{2} + b x + c}{a} = \frac{0}{a} $$
+
+Divide by a (simplified): $$ \frac{a x^{2} + b x + c}{a} = 0 $$
+
+Move constant to RHS: $$ - \frac{c}{a} + \frac{a x^{2} + b x + c}{a} = - \frac{c}{a} + \frac{0}{a} $$
+
+Move constant to RHS (simplified): $$ \frac{x \left(a x + b\right)}{a} = - \frac{c}{a} $$
+
+Add $(\frac{b}{2a})^2$ to both sides: $$ \left(- \frac{c}{a} + \frac{a x^{2} + b x + c}{a}\right) + \frac{b^{2}}{4 a^{2}} = \left(- \frac{c}{a} + \frac{0}{a}\right) + \frac{b^{2}}{4 a^{2}} $$
+
+Add $(\frac{b}{2a})^2$ to both sides (simplified): $$ \frac{a x \left(a x + b\right) + \frac{b^{2}}{4}}{a^{2}} = \frac{- a c + \frac{b^{2}}{4}}{a^{2}} $$
+
+Perfect square form (unsimplified RHS): $$ \left(x + \frac{b}{2 a}\right)^{2} = \left(- \frac{c}{a} + \frac{0}{a}\right) + \frac{b^{2}}{4 a^{2}} $$
+
+Perfect square form (unsimplified RHS) (simplified): $$ \left(x + \frac{b}{2 a}\right)^{2} = \frac{- a c + \frac{b^{2}}{4}}{a^{2}} $$
+
+Perfect square form (simplified RHS): $$ \left(x + \frac{b}{2 a}\right)^{2} = \frac{- a c + \frac{b^{2}}{4}}{a^{2}} $$
+
+Perfect square form (simplified RHS) (simplified): $$ \left(x + \frac{b}{2 a}\right)^{2} = \frac{- a c + \frac{b^{2}}{4}}{a^{2}} $$
+
+Square root (plus branch): $$ x + \frac{b}{2 a} = \frac{\sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Square root (plus branch) (simplified): $$ x + \frac{b}{2 a} = \frac{\sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Square root (minus branch): $$ x + \frac{b}{2 a} = - \frac{\sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Square root (minus branch) (simplified): $$ x + \frac{b}{2 a} = - \frac{\sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Solve for x (plus): $$ x = \frac{- b + \sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Solve for x (plus) (simplified): $$ x = \frac{- b + \sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Solve for x (minus): $$ x = \frac{- b - \sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Solve for x (minus) (simplified): $$ x = \frac{- b - \sqrt{- 4 a c + b^{2}}}{2 a} $$
+
+Quadratic formula: $$ x = \frac{-\,b \pm \sqrt{b^{2}-4ac}}{2a} $$
+
+
+
+\end{document}
+
+
+%%
+%% End of file `elsarticle-template-1-num.tex'.
