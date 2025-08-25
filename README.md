@@ -8,7 +8,7 @@ Fork this repository and open your forked version locally (e.g. using GitHub Des
 
 Set up LaTex for VSCode:
 
-[Install and set up LaTeX for VSCode](https://medium.com/@erencanbulut/boost-your-latex-workflow-with-vs-code-and-github-f346b74677be)
+[Install and set up LaTeX for VSCode (Step 4 onwards is relevant)](https://medium.com/@erencanbulut/boost-your-latex-workflow-with-vs-code-and-github-f346b74677be)
 
 This repository contains a LaTeX folder where you can work in the .tex file, and view the pdf. Python is also included with a requirements.txt for Sympy to assist with mathematics - an example usage is included for deriving the quadratic formula. The gitignore is setup to not ignore the pdf, but to ignore most of the auxillary created LaTeX files.
 
